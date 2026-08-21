@@ -768,6 +768,16 @@ footer{background:var(--burg);padding:80px 52px;text-align:center;}
   .work-track::-webkit-scrollbar,.roll-track::-webkit-scrollbar{height:8px;}
 }
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y7WK39P2ZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y7WK39P2ZC');
+</script>
+  
 </style>
 </head>
 <body>
@@ -1577,5 +1587,18 @@ document.querySelectorAll('.svc-card').forEach(card=>{
     videos.forEach(video => observer.observe(video));
   });
 </script>
+
+<script>
+  document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('click', () => {
+      const videoName = video.getAttribute('src').split('/').pop().split('#')[0];
+      gtag('event', 'select_content', {
+        'content_type': 'video',
+        'item_id': videoName
+      });
+    });
+  });
+</script>
+      
 </body>
 </html>
